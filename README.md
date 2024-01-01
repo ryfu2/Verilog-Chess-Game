@@ -1,2 +1,2 @@
 # Verilog-Chess-Game
-This project is a chess game using verilog on FPGA board Spartan 7. 
+This project is an FPGA-based chess game using verilog.
