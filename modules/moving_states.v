@@ -112,6 +112,30 @@ module moving_states(
     parameter promotion8 = 7'd76;
     parameter promotion8wait = 7'd78;
     parameter promotion8final = 7'd80;
+    parameter promotion1b = 7'd35;
+    parameter promotion1bwait = 7'd37;
+    parameter promotion1bfinal = 7'd39;
+    parameter promotion2b = 7'd41;
+    parameter promotion2bwait = 7'd43;
+    parameter promotion2bfinal = 7'd45;
+    parameter promotion3b = 7'd47;
+    parameter promotion3bwait = 7'd49;
+    parameter promotion3bfinal = 7'd51;
+    parameter promotion4b = 7'd53;
+    parameter promotion4bwait = 7'd55;
+    parameter promotion4bfinal = 7'd57;
+    parameter promotion5b = 7'd59;
+    parameter promotion5bwait = 7'd61;
+    parameter promotion5bfinal = 7'd63;
+    parameter promotion6b = 7'd65;
+    parameter promotion6bwait = 7'd67;
+    parameter promotion6bfinal = 7'd69;
+    parameter promotion7b = 7'd71;
+    parameter promotion7bwait = 7'd73;
+    parameter promotion7bfinal = 7'd75;
+    parameter promotion8b = 7'd77;
+    parameter promotion8bwait = 7'd79;
+    parameter promotion8bfinal = 7'd81;
     reg [3:0] rol, col;
     reg [3:0] undorol1, undocol1, undorol2, undocol2;
     reg [3:0] undorol3, undocol3, undorol4, undocol4;
@@ -439,7 +463,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -464,7 +488,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -543,7 +567,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -585,7 +609,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -829,7 +853,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -854,7 +878,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -933,7 +957,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -975,7 +999,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1219,7 +1243,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1244,7 +1268,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1323,7 +1347,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1365,7 +1389,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1609,7 +1633,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1634,7 +1658,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1713,7 +1737,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1755,7 +1779,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -1999,7 +2023,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2024,7 +2048,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2103,7 +2127,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2145,7 +2169,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2389,7 +2413,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2414,7 +2438,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2493,7 +2517,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2535,7 +2559,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2779,7 +2803,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2804,7 +2828,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2883,7 +2907,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -2925,7 +2949,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3169,7 +3193,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3194,7 +3218,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3273,7 +3297,7 @@ module moving_states(
                 end
                 3: begin
                    if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3315,7 +3339,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3462,7 +3486,7 @@ module moving_states(
             wr1: begin
                 if(click == 1 && rol < 8 && col < 8) begin
                     if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3506,7 +3530,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3570,7 +3594,7 @@ module moving_states(
             wr2: begin
                 if(click == 1&& rol < 8 && col < 8) begin
                     if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3614,7 +3638,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3933,7 +3957,7 @@ module moving_states(
                             movementvalid[6] <= 1;
                    end
                    else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -3958,7 +3982,7 @@ module moving_states(
                        end
                     end
                     else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4090,273 +4114,3128 @@ module moving_states(
             end
             bp1: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp1x <= rol;
-                        bp1y <= col;
-                        Board[rol][col] <= 6'b100001;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp1p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp1x <= rol;
+                            bp1y <= col;
+                            Board[rol][col] <= 6'b110001;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp1x <= rol;
+                            bp1y <= col;
+                            Board[rol][col] <= 6'b100001;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion1b;
+                                bp1p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp1x <= rol;
-                        bp1y <= col;
-                        Board[rol][col] <= 6'b100001;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp1x <= rol;
+                            bp1y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100001;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion1b;
+                                bp1p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp1x <= rol;
+                            bp1y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100001;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp1x <= rol;
-                        bp1y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100001;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp1x <= rol;
+                                   bp1y <= col;
+                                   Board[rol][col] <= 6'b100001;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp1x <= rol;
+                                   bp1y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100001;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp1x <= rol;
+                                   bp1y <= col;
+                                   Board[rol][col] <= 6'b100001;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp1x <= rol;
+                                   bp1y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100001;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp1x <= rol;
+                                bp1y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100001;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion1b: begin
+                if (click == 1) begin
+                    state <= promotion1bwait;
+                end
+            end
+            promotion1bwait: begin
+               if (click == 0) begin
+                   state <= promotion1bfinal;
+               end
+            end
+            promotion1bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp1p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp1p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp1p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp1p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp2: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                        if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
-                        bp2x <= rol;
-                        bp2y <= col;
-                        Board[rol][col] <= 6'b110010;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp2p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp2x <= rol;
+                            bp2y <= col;
+                            Board[rol][col] <= 6'b110010;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp2x <= rol;
+                            bp2y <= col;
+                            Board[rol][col] <= 6'b100010;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion2b;
+                                bp2p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp2x <= rol;
-                        bp2y <= col;
-                        Board[rol][col] <= 6'b100010;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp2x <= rol;
+                            bp2y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100010;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion2b;
+                                bp2p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp2x <= rol;
+                            bp2y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100010;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp2x <= rol;
-                        bp2y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100010;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
-                    else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
-                        bp2x <= rol;
-                        bp2y <= col;
-                        capturecode <= Board[rol][clickedcol];
-                        Board[rol][col] <= 6'b100010;
-                        Board[clickedrol][clickedcol] <= 0;
-                        Board[rol][clickedcol] <= 0;
-                        state <= wt;
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
                     end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp2x <= rol;
+                                   bp2y <= col;
+                                   Board[rol][col] <= 6'b100010;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp2x <= rol;
+                                   bp2y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100010;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp2x <= rol;
+                                   bp2y <= col;
+                                   Board[rol][col] <= 6'b100010;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp2x <= rol;
+                                   bp2y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100010;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp2x <= rol;
+                                bp2y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100010;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion2b: begin
+                if (click == 1) begin
+                    state <= promotion2bwait;
+                end
+            end
+            promotion2bwait: begin
+               if (click == 0) begin
+                   state <= promotion2bfinal;
+               end
+            end
+            promotion2bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp2p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp2p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp2p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp2p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp3: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp3x <= rol;
-                        bp3y <= col;
-                        Board[rol][col] <= 6'b100011;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp3p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp3x <= rol;
+                            bp3y <= col;
+                            Board[rol][col] <= 6'b110011;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp3x <= rol;
+                            bp3y <= col;
+                            Board[rol][col] <= 6'b100011;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion3b;
+                                bp3p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp3x <= rol;
-                        bp3y <= col;
-                        Board[rol][col] <= 6'b100011;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp3x <= rol;
+                            bp3y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100011;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion3b;
+                                bp3p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp3x <= rol;
+                            bp3y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100011;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp3x <= rol;
-                        bp3y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100011;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp3x <= rol;
+                                   bp3y <= col;
+                                   Board[rol][col] <= 6'b100011;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp3x <= rol;
+                                   bp3y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100011;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp3x <= rol;
+                                   bp3y <= col;
+                                   Board[rol][col] <= 6'b100011;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp3x <= rol;
+                                   bp3y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100011;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp3x <= rol;
+                                bp3y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100011;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion3b: begin
+                if (click == 1) begin
+                    state <= promotion3bwait;
+                end
+            end
+            promotion3bwait: begin
+               if (click == 0) begin
+                   state <= promotion3bfinal;
+               end
+            end
+            promotion3bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp3p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp3p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp3p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp3p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp4: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp4x <= rol;
-                        bp4y <= col;
-                        Board[rol][col] <= 6'b100100;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp4p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp4x <= rol;
+                            bp4y <= col;
+                            Board[rol][col] <= 6'b110100;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp4x <= rol;
+                            bp4y <= col;
+                            Board[rol][col] <= 6'b100100;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion4b;
+                                bp4p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp4x <= rol;
-                        bp4y <= col;
-                        Board[rol][col] <= 6'b100100;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp4x <= rol;
+                            bp4y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100100;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion4b;
+                                bp4p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp4x <= rol;
+                            bp4y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100100;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp4x <= rol;
-                        bp4y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100100;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp4x <= rol;
+                                   bp4y <= col;
+                                   Board[rol][col] <= 6'b100100;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp4x <= rol;
+                                   bp4y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100100;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp4x <= rol;
+                                   bp4y <= col;
+                                   Board[rol][col] <= 6'b100100;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp4x <= rol;
+                                   bp4y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100100;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp4x <= rol;
+                                bp4y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100100;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion4b: begin
+                if (click == 1) begin
+                    state <= promotion4bwait;
+                end
+            end
+            promotion4bwait: begin
+               if (click == 0) begin
+                   state <= promotion4bfinal;
+               end
+            end
+            promotion4bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp4p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp4p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp4p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp4p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp5: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp5x <= rol;
-                        bp5y <= col;
-                        Board[rol][col] <= 6'b100101;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp5p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp5x <= rol;
+                            bp5y <= col;
+                            Board[rol][col] <= 6'b110101;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp5x <= rol;
+                            bp5y <= col;
+                            Board[rol][col] <= 6'b100101;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion5b;
+                                bp5p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp5x <= rol;
-                        bp5y <= col;
-                        Board[rol][col] <= 6'b100101;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp5x <= rol;
+                            bp5y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100101;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion5b;
+                                bp5p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp5x <= rol;
+                            bp5y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100101;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp5x <= rol;
-                        bp5y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100101;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp5x <= rol;
+                                   bp5y <= col;
+                                   Board[rol][col] <= 6'b100101;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp5x <= rol;
+                                   bp5y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100101;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp5x <= rol;
+                                   bp5y <= col;
+                                   Board[rol][col] <= 6'b100101;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp5x <= rol;
+                                   bp5y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100101;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp5x <= rol;
+                                bp5y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100101;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion5b: begin
+                if (click == 1) begin
+                    state <= promotion5bwait;
+                end
+            end
+            promotion5bwait: begin
+               if (click == 0) begin
+                   state <= promotion5bfinal;
+               end
+            end
+            promotion5bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp5p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp5p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp5p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp5p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp6: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp6x <= rol;
-                        bp6y <= col;
-                        Board[rol][col] <= 6'b100110;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp6p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp6x <= rol;
+                            bp6y <= col;
+                            Board[rol][col] <= 6'b110110;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp6x <= rol;
+                            bp6y <= col;
+                            Board[rol][col] <= 6'b100110;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion6b;
+                                bp6p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp6x <= rol;
-                        bp6y <= col;
-                        Board[rol][col] <= 6'b100110;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp6x <= rol;
+                            bp6y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100110;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion6b;
+                                bp6p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp6x <= rol;
+                            bp6y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100110;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp6x <= rol;
-                        bp6y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100110;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp6x <= rol;
+                                   bp6y <= col;
+                                   Board[rol][col] <= 6'b100110;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp6x <= rol;
+                                   bp6y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100110;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp6x <= rol;
+                                   bp6y <= col;
+                                   Board[rol][col] <= 6'b100110;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp6x <= rol;
+                                   bp6y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100110;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp6x <= rol;
+                                bp6y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100110;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion6b: begin
+                if (click == 1) begin
+                    state <= promotion6bwait;
+                end
+            end
+            promotion6bwait: begin
+               if (click == 0) begin
+                   state <= promotion6bfinal;
+               end
+            end
+            promotion6bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp6p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp6p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp6p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp6p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             bp7: begin
                 if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp7x <= rol;
-                        bp7y <= col;
-                        Board[rol][col] <= 6'b100111;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    case(bp7p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp7x <= rol;
+                            bp7y <= col;
+                            Board[rol][col] <= 6'b110111;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp7x <= rol;
+                            bp7y <= col;
+                            Board[rol][col] <= 6'b100111;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion7b;
+                                bp7p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp7x <= rol;
-                        bp7y <= col;
-                        Board[rol][col] <= 6'b100111;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp7x <= rol;
+                            bp7y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b100111;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion7b;
+                                bp7p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp7x <= rol;
+                            bp7y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b100111;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
                         end
                     end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp7x <= rol;
-                        bp7y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b100111;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
                         end
                     end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp7x <= rol;
+                                   bp7y <= col;
+                                   Board[rol][col] <= 6'b100111;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp7x <= rol;
+                                   bp7y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100111;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp7x <= rol;
+                                   bp7y <= col;
+                                   Board[rol][col] <= 6'b100111;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp7x <= rol;
+                                   bp7y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b100111;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp7x <= rol;
+                                bp7y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b100111;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
                 end
                 else if (click == 2)
                     state <= bt;
             end
-            bp8: begin
-                if(click == 1&& rol < 8 && col < 8) begin
-                    if (clickedrol == rol && !Board[rol][col]) begin
-                       if (clickedcol == 1 && (col == 2 || col == 3)) begin
-                        bp8x <= rol;
-                        bp8y <= col;
-                        Board[rol][col] <= 6'b101000;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+            promotion7b: begin
+                if (click == 1) begin
+                    state <= promotion7bwait;
+                end
+            end
+            promotion7bwait: begin
+               if (click == 0) begin
+                   state <= promotion7bfinal;
+               end
+            end
+            promotion7bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp7p <= 1;
+                            state <= wt;
                         end
-                        else if (col == clickedcol + 1) begin
-                        bp8x <= rol;
-                        bp8y <= col;
-                        Board[rol][col] <= 6'b101000;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if (col == clickedcol - 1) begin
+                            bp7p <= 2;
+                            state <= wt;
                         end
-                    end
-                    else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
-                        if (col == clickedcol + 1) begin
-                        bp8x <= rol;
-                        bp8y <= col;
-                        capturecode <= Board[rol][col];
-                        Board[rol][col] <= 6'b101000;
-                        Board[clickedrol][clickedcol] <= 0;
-                        state <= wt;
+                        else if (col == clickedcol - 2) begin
+                            bp7p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp7p <= 4;
+                            state <= wt;
                         end
                     end
                 end
+            end
+            bp8: begin
+                if(click == 1&& rol < 8 && col < 8) begin
+                    case(bp8p)
+                    0: begin
+                        if (clickedrol == rol && !Board[rol][col]) begin
+                            if (clickedcol == 1 && col == 3 && !Board[rol][2]) begin
+                            bp8x <= rol;
+                            bp8y <= col;
+                            Board[rol][col] <= 6'b111000;
+                            Board[clickedrol][clickedcol] <= 0;
+                            state <= wt;
+                            end
+                            else if (col == clickedcol + 1) begin
+                            bp8x <= rol;
+                            bp8y <= col;
+                            Board[rol][col] <= 6'b101000;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion8b;
+                                bp8p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if ((clickedrol == rol + 1 || clickedrol == rol - 1) && (Board[rol][col][5] == 0 && Board[rol][col] != 0)) begin
+                            if (col == clickedcol + 1) begin
+                            bp8x <= rol;
+                            bp8y <= col;
+                            capturecode <= Board[rol][col];
+                            Board[rol][col] <= 6'b101000;
+                            Board[clickedrol][clickedcol] <= 0;
+                            if (col == 7) begin
+                                state <= promotion8b;
+                                bp8p <= 5;
+                                clickedrol <= rol;
+                                clickedcol <= col;
+                            end
+                            else begin
+                                state <= wt;
+                            end
+                            end
+                        end
+                        else if (Board[rol][clickedcol] <= 32 && Board[rol][clickedcol] >= 17 && (clickedrol == rol + 1 || clickedrol == rol - 1) && col == clickedcol + 1) begin
+                            bp8x <= rol;
+                            bp8y <= col;
+                            capturecode <= Board[rol][clickedcol];
+                            Board[rol][col] <= 6'b101000;
+                            Board[clickedrol][clickedcol] <= 0;
+                            Board[rol][clickedcol] <= 0;
+                            state <= wt;
+                        end
+                    end
+                    1: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                        end
+                        else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                        end
+                        if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                   2: begin
+                       if (rol - clickedrol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (rol - clickedrol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && col - clickedcol == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && col - clickedcol == 2)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 2 && clickedcol - col == 1)
+                           movementvalid[6] <= 1;
+                       else if (clickedrol - rol == 1 && clickedcol - col == 2)
+                           movementvalid[6] <= 1;
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (!Board[rol][col]) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    3: begin
+                        if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
+                            if (clickedcol < col - 1 && col >= 1) begin
+                                for (i = 1; i < (col - clickedcol); i = i + 1) begin
+                                    if (Board[rol][i + clickedcol] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == col - clickedcol - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol > col + 1) begin
+                                for (i = 1; i < (clickedcol - col); i = i + 1) begin
+                                    if (Board[rol][i + col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedcol - col - 1)
+                                        movementvalid[6] <= 1;
+                                end
+                           end
+                           else if (clickedcol == col - 1 || clickedcol == col + 1) begin
+                                        movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6] && movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                               if (!Board[rol][col]) begin
+                                   bp8x <= rol;
+                                   bp8y <= col;
+                                   Board[rol][col] <= 6'b101000;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp8x <= rol;
+                                   bp8y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b101000;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                        else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
+                            if (clickedrol < rol - 1 && rol >= 1) begin
+                                for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+                                    if (Board[i + clickedrol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == rol - clickedrol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol > rol + 1) begin
+                                for (i = 1; i < (clickedrol - rol); i = i + 1) begin
+                                    if (Board[i + rol][col] != 0) begin
+                                        movementvalid[i-1] <= 0;
+                                    end
+                                    if (i == clickedrol - rol - 1) begin
+                                        movementvalid[6] <= 1;
+                                    end
+                                end
+                           end
+                           else if (clickedrol == rol - 1 || clickedrol == rol + 1) begin
+                                movementvalid[6] <= 1;
+                           end
+                           if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0])begin
+                               if (!Board[rol][col]) begin
+                                   bp8x <= rol;
+                                   bp8y <= col;
+                                   Board[rol][col] <= 6'b101000;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                               else if (!Board[rol][col][5]) begin
+                                   bp8x <= rol;
+                                   bp8y <= col;
+                                   capturecode <= Board[rol][col];
+                                   Board[rol][col] <= 6'b101000;
+                                   Board[clickedrol][clickedcol] <= 0;
+                                   state <= wt;
+                               end
+                            end
+                        end
+                    end
+                    4: begin
+                        if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < rol - clickedrol; i = i + 1) begin
+                               if (Board[i + clickedrol][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == rol - clickedrol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (rol - clickedrol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < col - clickedcol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol + i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == col - clickedcol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (col - clickedcol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
+                           for (i = 1; i < clickedrol - rol; i = i + 1) begin
+                               if (Board[clickedrol - i][clickedcol - i] != 0) begin
+                                    movementvalid[i-1] <= 0;
+                               end
+                               if (i == clickedrol - rol - 1)
+                                    movementvalid[6] <= 1;
+                           end
+                           if (clickedrol - rol == 1)
+                                movementvalid[6] <= 1;
+                       end
+                       if (movementvalid[6]&&movementvalid[5]&&movementvalid[4]&&movementvalid[3]&&movementvalid[2]&&movementvalid[1]&&movementvalid[0]) begin
+                            if (Board[rol][col] == 0) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                            else if (!Board[rol][col][5]) begin
+                                bp8x <= rol;
+                                bp8y <= col;
+                                capturecode <= Board[rol][col];
+                                Board[rol][col] <= 6'b101000;
+                                Board[clickedrol][clickedcol] <= 0;
+                                state <= wt;
+                            end
+                        end
+                    end
+                    default: begin
+                    end
+                    endcase
+                end
                 else if (click == 2)
                     state <= bt;
+            end
+            promotion8b: begin
+                if (click == 1) begin
+                    state <= promotion8bwait;
+                end
+            end
+            promotion8bwait: begin
+               if (click == 0) begin
+                   state <= promotion8bfinal;
+               end
+            end
+            promotion8bfinal: begin
+                if (click == 1) begin
+                    if (clickedrol == rol) begin
+                        if (col == clickedcol) begin
+                            bp8p <= 1;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 1) begin
+                            bp8p <= 2;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 2) begin
+                            bp8p <= 3;
+                            state <= wt;
+                        end
+                        else if (col == clickedcol - 3) begin
+                            bp8p <= 4;
+                            state <= wt;
+                        end
+                    end
+                end
             end
             br1: begin
                 if(click == 1&& rol < 8 && col < 8) begin
                     if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4398,7 +7277,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4462,7 +7341,7 @@ module moving_states(
             br2: begin
                 if(click == 1&& rol < 8 && col < 8) begin
                     if (clickedrol == rol && clickedcol != col && Board[rol][col][5] == 0) begin
-                        if (clickedcol < col - 1) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4504,7 +7383,7 @@ module moving_states(
                         end
                     end
                     else if (clickedcol == col && clickedrol != rol && Board[rol][col][5] == 0) begin
-                        if (clickedrol < rol - 1) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4778,7 +7657,7 @@ module moving_states(
             end
             bq: begin
                 if(click == 1 && rol < 8 && col < 8) begin
-                   if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
+                   if ((rol > clickedrol) && (clickedcol > col) && ((rol - clickedrol) == -(col - clickedcol)) && (!Board[rol][col][5])) begin
                        for (i = 1; i < rol - clickedrol; i = i + 1) begin
                            if (Board[i + clickedrol][clickedcol - i] != 0) begin
                                 movementvalid[i-1] <= 0;
@@ -4789,7 +7668,7 @@ module moving_states(
                        if (rol - clickedrol == 1)
                             movementvalid[6] <= 1;
                    end
-                   else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (Board[rol][col][5] == 1 || !Board[rol][col]))begin
+                   else if ((rol > clickedrol) &&(col > clickedcol) && ((rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
                        for (i = 1; i < rol - clickedrol; i = i + 1) begin
                            if (Board[i + clickedrol][clickedcol + i] != 0) begin
                                 movementvalid[i-1] <= 0;
@@ -4800,7 +7679,7 @@ module moving_states(
                        if (rol - clickedrol == 1)
                             movementvalid[6] <= 1;
                    end
-                   else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (Board[rol][col][5] == 1 || !Board[rol][col]))begin
+                   else if ((clickedrol > rol) &&(col > clickedcol) && (-(rol - clickedrol) == (col - clickedcol)) && (!Board[rol][col][5]))begin
                        for (i = 1; i < col - clickedcol; i = i + 1) begin
                            if (Board[clickedrol - i][clickedcol + i] != 0) begin
                                 movementvalid[i-1] <= 0;
@@ -4811,7 +7690,7 @@ module moving_states(
                        if (col - clickedcol == 1)
                             movementvalid[6] <= 1;
                    end
-                   else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (Board[rol][col][5] == 1 || !Board[rol][col]))begin
+                   else if ((clickedrol > rol) &&(clickedcol > col) && ((clickedrol- rol) == (clickedcol - col)) && (!Board[rol][col][5]))begin
                        for (i = 1; i < clickedrol - rol; i = i + 1) begin
                            if (Board[clickedrol - i][clickedcol - i] != 0) begin
                                 movementvalid[i-1] <= 0;
@@ -4822,8 +7701,8 @@ module moving_states(
                        if (clickedrol - rol == 1)
                             movementvalid[6] <= 1;
                    end
-                   else if (clickedrol == rol && clickedcol != col && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedcol < col - 1) begin
+                   else if (clickedrol == rol && clickedcol != col && (!Board[rol][col][5])) begin
+                        if (clickedcol < col - 1 && col >= 1) begin
                             for (i = 1; i < (col - clickedcol); i = i + 1) begin
                                 if (Board[rol][i + clickedcol] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4847,8 +7726,8 @@ module moving_states(
                             movementvalid[6] <= 1;
                        end
                     end
-                    else if (clickedcol == col && clickedrol != rol && (Board[rol][col][5] == 1 || !Board[rol][col])) begin
-                        if (clickedrol < rol - 1) begin
+                    else if (clickedcol == col && clickedrol != rol && (!Board[rol][col][5])) begin
+                        if (clickedrol < rol - 1 && rol >= 1) begin
                             for (i = 1; i < (rol - clickedrol); i = i + 1) begin
                                 if (Board[i + clickedrol][col] != 0) begin
                                     movementvalid[i-1] <= 0;
@@ -4858,6 +7737,16 @@ module moving_states(
                                 end
                             end
                        end
+//                       else if (clickedrol >= 2 && rol == 0) begin
+//                            for (i = 1; i < (rol - clickedrol); i = i + 1) begin
+//                                if (Board[i + clickedrol][col] != 0) begin
+//                                    movementvalid[i-1] <= 0;
+//                                end
+//                                if (i == rol - clickedrol - 1) begin
+//                                    movementvalid[6] <= 1;
+//                                end
+//                            end
+//                       end
                        else if (clickedrol > rol + 1) begin
                             for (i = 1; i < (clickedrol - rol); i = i + 1) begin
                                 if (Board[i + rol][col] != 0) begin
