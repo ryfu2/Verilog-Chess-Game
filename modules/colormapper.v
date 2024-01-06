@@ -135,6 +135,14 @@ module colormapper(
     .wp6p(wp6p),
     .wp7p(wp7p),
     .wp8p(wp8p),
+    .bp1p(bp1p),
+    .bp2p(bp2p),
+    .bp3p(bp3p),
+    .bp4p(bp4p),
+    .bp5p(bp5p),
+    .bp6p(bp6p),
+    .bp7p(bp7p),
+    .bp8p(bp8p),
     .state(state),
     .capindex(capindex),
     .capturecode(capturecode),
@@ -483,6 +491,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(a7offsetx),
         .offsetY(a7offsety),
+        .promotion(bp1p),
         .red(b1R),
         .green(b1G),
         .blue(b1B),
@@ -500,6 +509,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(b7offsetx),
         .offsetY(b7offsety),
+        .promotion(bp2p),
         .red(b2R),
         .green(b2G),
         .blue(b2B),
@@ -518,6 +528,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(c7offsetx),
         .offsetY(c7offsety),
+        .promotion(bp3p),
         .red(b3R),
         .green(b3G),
         .blue(b3B),
@@ -536,6 +547,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(d7offsetx),
         .offsetY(d7offsety),
+        .promotion(bp4p),
         .red(b4R),
         .green(b4G),
         .blue(b4B),
@@ -554,6 +566,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(e7offsetx),
         .offsetY(e7offsety),
+        .promotion(bp5p),
         .red(b5R),
         .green(b5G),
         .blue(b5B),
@@ -572,6 +585,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(f7offsetx),
         .offsetY(f7offsety),
+        .promotion(bp6p),
         .red(b6R),
         .green(b6G),
         .blue(b6B),
@@ -590,6 +604,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(g7offsetx),
         .offsetY(g7offsety),
+        .promotion(bp7p),
         .red(b7R),
         .green(b7G),
         .blue(b7B),
@@ -608,6 +623,7 @@ module colormapper(
         .DrawY(DrawY),
         .offsetX(h7offsetx),
         .offsetY(h7offsety),
+        .promotion(bp8p),
         .red(b8R),
         .green(b8G),
         .blue(b8B),
@@ -771,6 +787,125 @@ module colormapper(
 	.green (propalette_green),
 	.blue  (propalette_blue)
     );
+    
+    wire[3:0] rom_bpromotion;
+    wire [3:0] bpropalette_red, bpropalette_green, bpropalette_blue;
+    reg[13:0] bprorom_addr;
+    bpromotion_rom bpromotion_rom (
+	.clka   (negedge_vga_clk),
+	.addra  (bprorom_addr),
+	.douta  (rom_bpromotion)
+    );
+    bpromotion_palette bpromotion_palette (
+	.index (rom_bpromotion),
+	.red   (bpropalette_red),
+	.green (bpropalette_green),
+	.blue  (bpropalette_blue)
+    );
+    
+    reg bpro_on;
+    always @(*) begin
+        if (bp2p == 5) begin
+            if ((DrawX - b7offsetx) <= 54 && (DrawX - b7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - b7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp1p == 5) begin
+            if ((DrawX - a7offsetx) <= 54 && (DrawX - a7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - a7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp3p == 5) begin
+            if ((DrawX - c7offsetx) <= 54 && (DrawX - c7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - c7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp4p == 5) begin
+            if ((DrawX - d7offsetx) <= 54 && (DrawX - d7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - d7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp5p == 5) begin
+            if ((DrawX - e7offsetx) <= 54 && (DrawX - e7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - e7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp6p == 5) begin
+            if ((DrawX - f7offsetx) <= 54 && (DrawX - f7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - f7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp7p == 5) begin
+            if ((DrawX - g7offsetx) <= 54 && (DrawX - g7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - g7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else if (bp8p == 5) begin
+            if ((DrawX - h7offsetx) <= 54 && (DrawX - h7offsetx) >= 0 && DrawY <= 459 && DrawY >= 240 )
+            begin
+                bprorom_addr = (DrawX - h7offsetx) + (DrawY - 240) * 55;
+                bpro_on = 1;
+            end
+            else
+            begin
+                bprorom_addr = 0;
+                bpro_on = 0;
+            end
+        end
+        else begin
+            bprorom_addr = 0;
+            bpro_on = 0;
+        end
+    end
     
     
     reg wpro_on;
@@ -1120,6 +1255,11 @@ module colormapper(
                 Red <= propalette_red;
                 Green <= propalette_green;
                 Blue <= propalette_blue;
+            end
+            else if (bpro_on) begin
+                Red <= bpropalette_red;
+                Green <= bpropalette_green;
+                Blue <= bpropalette_blue;
             end
         end
     end
